@@ -218,7 +218,7 @@ public class MemberDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rSet = null;
-		
+
 		String sql = "SELECT * FROM MEMBER WHERE USERID = ?";
 
 		try {
@@ -252,48 +252,45 @@ public class MemberDao {
 		return m;
 	}
 
-	public int updateMember(String userId, String userPwd, String email, String phone, 
-			String address) {
+	public int updateMember(String userId, String userPwd, String email, String phone, String address) {
 
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+
 		// 실행할 SQL문
 		// UPDATE MEMBER
 		// SET USERPWD = 'xxx',
-		//	   EMAIL = 'xxx',
-		//	   PHONE = 'xxx',
-		//	   ADDRESS = 'xxx'
+		// EMAIL = 'xxx',
+		// PHONE = 'xxx',
+		// ADDRESS = 'xxx'
 		// WHERE USERID = userId
-		
-		String sql = "UPDATE MEMBER SET USERPWD = ? , EMAIL = ? ,"
-				+ " PHONE = ?, ADDRESS = ? WHERE USERID = ?";
-					
+
+		String sql = "UPDATE MEMBER SET USERPWD = ? , EMAIL = ? ," + " PHONE = ?, ADDRESS = ? WHERE USERID = ?";
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "JDBC", "JDBC");
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, userPwd);
 			pstmt.setString(2, email);
 			pstmt.setString(3, phone);
 			pstmt.setString(4, address);
 			pstmt.setString(5, userId);
-			result = pstmt.executeUpdate(); //****이새기도 set 다하고 그다음에 있어야함 !!!!!!!!
-			
-			if(result > 0) {
+			result = pstmt.executeUpdate(); // ****이새기도 set 다하고 그다음에 있어야함 !!!!!!!!
+
+			if (result > 0) {
 				conn.commit();
-			}else {
+			} else {
 				conn.rollback();
 			}
-			
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
 				pstmt.close();
 				conn.close();
@@ -301,7 +298,7 @@ public class MemberDao {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return result;
 	}
 
@@ -309,24 +306,24 @@ public class MemberDao {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		
+
 		String sql = "DELETE FROM MEMBER WHERE USERID = ?";
-		
+
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
-			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "JDBC","JDBC");
+			conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "JDBC", "JDBC");
 			pstmt = conn.prepareStatement(sql);
-			
+
 			pstmt.setString(1, userId);
-			
+
 			result = pstmt.executeUpdate();
-			
-			if(result >0) {
+
+			if (result > 0) {
 				conn.commit();
-			}else {
+			} else {
 				conn.rollback();
 			}
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {

@@ -15,7 +15,6 @@ public class Member {
 	private String address;
 	private String hobby; 
 	private Date enrollDate;
-	private String inputUserId;
 	
 	public Member() {}
 	
@@ -137,19 +136,12 @@ public class Member {
 		this.enrollDate = enrollDate;
 	}
 
-	public String getInputUserId() {
-		return inputUserId;
-	}
-
-	public void setInputUserId(String inputUserId) {
-		this.inputUserId = inputUserId;
-	}
 
 	@Override
 	public String toString() {
 		return "Member [userNo=" + userNo + ", userId=" + userId + ", userPwd=" + userPwd + ", userName=" + userName
 				+ ", gender=" + gender + ", age=" + age + ", email=" + email + ", phone=" + phone + ", address="
-				+ address + ", hobby=" + hobby + ", enrollDate=" + enrollDate + ", inputUserId=" + inputUserId + "]";
+				+ address + ", hobby=" + hobby + ", enrollDate=" + enrollDate +"]";
 	}
 	
 	

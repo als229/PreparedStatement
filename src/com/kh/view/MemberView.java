@@ -39,12 +39,12 @@ public class MemberView {
 			case 4:
 				selectByKeyword();
 				break;
-			 case 5:
-			 updateMember();
-			 break;
-			 case 6:
-			 delectMember();
-			 break;
+			case 5:
+				updateMember();
+				break;
+			case 6:
+				delectMember();
+				break;
 			case 0:
 				System.out.println("프로그램을 종료합니다.");
 				return;
@@ -60,13 +60,13 @@ public class MemberView {
 		System.out.println("---- 회원 삭제 ----");
 		System.out.println("삭제하실 회원 id를 입력해주세요");
 		String userId = sc.nextLine();
-		
+
 		mc.deleteMember(userId);
-		
+
 	}
 
 	private void updateMember() {
-		
+
 		System.out.println("---- 회원 정보 수정 ----");
 		System.out.println("수정하고 싶은 회원 id를 입력해주세용");
 		String userId = sc.nextLine();
@@ -78,7 +78,7 @@ public class MemberView {
 		String phone = sc.nextLine();
 		System.out.println("새로운 주소를 입력하세요");
 		String address = sc.nextLine();
-		
+
 		mc.updateMember(userId, userPwd, email, phone, address);
 	}
 
@@ -86,9 +86,9 @@ public class MemberView {
 		System.out.println("---- 아이디로 검색하기 ----");
 		System.out.println("검색할 아이디를 입력해주세요");
 		String userId = sc.nextLine();
-		
+
 		mc.selectByUserId(userId);
-		
+
 	}
 
 	private void selectByKeyword() {
@@ -182,13 +182,12 @@ public class MemberView {
 			System.out.println(list.get(i));
 		}
 	}
-	
+
 	public void displayOne(Member m) {
 
 		System.out.println("\n조회된 데이터는 다음과 같슴다.");
 
 		System.out.println(m);
 	}
-
 
 }
